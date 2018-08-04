@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+看看
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-offset-2 col-xs-12 col-sm-8">
+            <div class="jumbotron">
+                <h2 class="text-center">欢迎访问<span class="text-info"><em>看看</em></span></h2>
+                <br>
+                {% if data %}
+                    <p>{{ data }}</p>
+                {% else %}
+                    <p>生活就像一盒巧克力，你永远不知道你会得到什么。</p>
+                    <p class="text-right">——《阿甘正传》</p>
+                {% endif %}
+                <span><a class="btn btn-primary " href="" role="button">看看</a></span>
+                <span><a class="btn btn-success " href="">电视剧</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

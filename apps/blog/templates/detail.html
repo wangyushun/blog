@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ blog.title }}
+{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='blog/blog.css') }}">
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+			<img class="img-responsive center-block" src="{{ url_for('static', filename='logo/blog-logo.jpg') }}">
+		</div>
+		<div class="row">
+			<div class="col-sm-offset-1 col-xs-12 col-sm-8 main-content">
+				<div>
+					<p>{{ blog.title }}</p>
+					<p>{{ blog.content }}</p>
+				<div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

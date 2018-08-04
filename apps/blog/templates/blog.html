@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{# 导入分页模板宏 #}
+{% import 'paginater.html' as pagi %}
+
+{% block title %}
+	博客
+{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='blog/blog.css') }}">
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+		<div class="row">
+			<img class="img-responsive center-block" src="{{ url_for('static', filename='logo/blog-logo.jpg') }}">
+		</div>
+		<div class="row">
+			<div class="col-sm-offset-2 col-xs-12 col-sm-6 main-content">
+				<div>
+					{% for blog in paginater.items %}
+						<div class="blog-item">
+							<strong	><a class="title" href="{{ url_for('blog_bp.detail', id=blog.id) }}">{{ blog.title }}</a></strong>
+							<p>分类：{{ blog.category.name }}</p>
+							<p>标签：
+								{% for tag in blog.tags %}
+
+									<span class="glyphicon glyphicon-tags">{{ tag.name }}</span>
+								{% endfor %}
+							</p>
+							<p>{{ blog.created_time }}</p>
+						</div>
+					{% endfor %}
+				</div>
+				<div>
+					{% if paginater %}
+						{{ pagi.pagination_widget(paginater, 'blog_bp.blog') }}
+					{% endif %}
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-2">
+				<div class="category-sidebar">
+					<strong>分类：</strong>
+					<hr class="style-three" />
+					<a class="btn category-item" href="">全部</a>
+					{% for cate in categorys %}
+						<span class="btn category-item">{{ cate.name }}({{ cate.blogs.__len__() }})</span>
+					{% endfor %}
+				</div>
+				<div class="tag-sidebar">
+					<strong>标签：</strong>
+					<hr class="style-three" />
+					<a class="btn tag-item" href="">全部</a>
+					{% for tag in tags %}
+						<a class="btn tag-item">{{ tag.name }}({{ tag.blogs.__len__() }})</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+

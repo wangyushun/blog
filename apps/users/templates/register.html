@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+用户注册
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-offset-3 col-xs-12 col-sm-6">
+            <div class="jumbotron">
+                <h2 class="text-center">用户注册</h2>
+                <br>
+                <form method="post">
+                    {% for item in form %}
+                        {% if item.name != 'submit' %}
+                            {% if item.errors %}
+                                <p class="text-danger">
+                                    {% for error in item.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </p>
+                            {% endif %}
+                            {{ item.label }} {{ item }}<br>
+                        {% endif %}
+                    {% endfor %}
+                    {# flash消息闪现 #}
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            <p class="text-danger">
+                                {% for category, message in messages %}
+                                    {{ message }}
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+                    {% endwith %}
+                    {{ form.submit }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
