@@ -24,7 +24,6 @@
 							<p>分类：{{ blog.category.name }}</p>
 							<p>标签：
 								{% for tag in blog.tags %}
-
 									<span class="glyphicon glyphicon-tags">{{ tag.name }}</span>
 								{% endfor %}
 							</p>
@@ -44,7 +43,7 @@
 					<hr class="style-three" />
 					<a class="btn category-item" href="">全部</a>
 					{% for cate in categorys %}
-						<span class="btn category-item">{{ cate.name }}({{ cate.blogs.__len__() }})</span>
+						<a class="btn category-item">{{ cate.name }}({{ cate.blogs.__len__() }})</a>
 					{% endfor %}
 				</div>
 				<div class="tag-sidebar">

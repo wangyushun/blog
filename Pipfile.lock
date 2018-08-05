@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "cfa4834675278b400d9518cf1f1f2d8ce92ce978c997b70d7fc89322565a8609"
+            "sha256": "2436d2e3476ab2534473dcaed67be848e874953e9f9a25dade906ab4bdeb8a16"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,6 +16,13 @@
         ]
     },
     "default": {
+        "babel": {
+            "hashes": [
+                "sha256:6778d85147d5d85345c14a26aada5e478ab04e39b078b0745ee6870c2b5cf669",
+                "sha256:8cba50f48c529ca3fa18cf81fa9403be176d374ac4d60738b839122dfaaa3d23"
+            ],
+            "version": "==2.6.0"
+        },
         "click": {
             "hashes": [
                 "sha256:29f99fc6125fbc931b758dc053b3114e55c77a6e4c6c3a2674a2dc986016381d",
@@ -38,6 +45,13 @@
             "index": "pypi",
             "version": "==1.5.1"
         },
+        "flask-babelex": {
+            "hashes": [
+                "sha256:cf79cdedb5ce860166120136b0e059e9d97b8df07a3bc2411f6243de04b754b4"
+            ],
+            "index": "pypi",
+            "version": "==0.9.3"
+        },
         "flask-login": {
             "hashes": [
                 "sha256:c815c1ac7b3e35e2081685e389a665f2c74d7e077cb93cecabaea352da4752ec"
@@ -52,6 +66,14 @@
             ],
             "index": "pypi",
             "version": "==2.3.2"
+        },
+        "flask-wtf": {
+            "hashes": [
+                "sha256:5d14d55cfd35f613d99ee7cba0fc3fbbe63ba02f544d349158c14ca15561cc36",
+                "sha256:d9a9e366b32dcbb98ef17228e76be15702cd2600675668bca23f63a7947fd5ac"
+            ],
+            "index": "pypi",
+            "version": "==0.14.2"
         },
         "itsdangerous": {
             "hashes": [
@@ -108,6 +130,19 @@
             "index": "pypi",
             "version": "==2.7.5"
         },
+        "pytz": {
+            "hashes": [
+                "sha256:a061aa0a9e06881eb8b3b2b43f05b9439d6583c206d0a6c340ff72a7b6669053",
+                "sha256:ffb9ef1de172603304d9d2819af6f5ece76f2e85ec10692a524dd876e72bf277"
+            ],
+            "version": "==2018.5"
+        },
+        "speaklater": {
+            "hashes": [
+                "sha256:59fea336d0eed38c1f0bf3181ee1222d0ef45f3a9dd34ebe65e6bfffdd6a65a9"
+            ],
+            "version": "==1.3"
+        },
         "sqlalchemy": {
             "hashes": [
                 "sha256:72325e67fb85f6e9ad304c603d83626d1df684fdf0c7ab1f0352e71feeab69d8"
@@ -126,6 +161,7 @@
                 "sha256:0cdbac3e7f6878086c334aa25dc5a33869a3954e9d1e015130d65a69309b3b61",
                 "sha256:e3ee092c827582c50877cdbd49e9ce6d2c5c1f6561f849b3b068c1b8029626f1"
             ],
+            "index": "pypi",
             "version": "==2.2.1"
         }
     },

@@ -27,6 +27,7 @@ def create_app():
     babel = Babel(app)
     #注册login
     login_manager.init_app(app)
+
     #注册全局404错误处理
     app.register_error_handler(404, error404)
 

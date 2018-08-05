@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
 
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	username = db.Column(db.String(20), unique=True)
-	_password = db.Column(db.String(256))
+	_password = db.Column('password', db.String(256))
 	nickname = db.Column(db.String(20), nullable=True)
 	email = db.Column(db.String(30), unique=True, nullable=True)
 	telephone = db.Column(db.String(11), nullable=True)
@@ -23,6 +23,13 @@ class User(db.Model, UserMixin):
 	__mapper_args__ = {
 		"order_by": created_time.desc()
 	}
+
+	def __init__(self, username=None, password=None, is_superuser=False, *args, **kwargs):
+		self.username = username
+		self.password = password
+		self.is_superuser = is_superuser
+		super(User, self).__init__(*args, **kwargs)
+
 
 	def __str__(self):
 		return '<User:{0}>'.format(self.username)
@@ -38,7 +45,15 @@ class User(db.Model, UserMixin):
 	def check_password(self, pw):
 		return check_password_hash(self._password, pw)
 
-
+	@classmethod
+	def is_username_exists(self, username):
+		try:
+			user = self.query.filter_by(username=username).first()
+			if not user:
+				return False
+		except Exception:
+			pass
+		return True
 
 class UserLog(db.Model):
 	__tablename__ = 'userlog'
@@ -57,5 +72,9 @@ class UserLog(db.Model):
 
 @login_manager.user_loader
 def load_user(user_id):
-	return User.get(user_id)
+	try:
+		user = User.query.get(user_id)
+	except Exception:
+		user = None
+	return user
 

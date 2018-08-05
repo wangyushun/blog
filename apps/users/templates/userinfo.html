@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+个人信息
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-offset-3 col-xs-12 col-sm-6">
+            <div class="jumbotron">
+                <h2 class="text-center">个人信息</h2>
+                <br>
+                <p>用户名：{{ user.username }}
+                    <a class="btn btn-info pull-right" href="{{ url_for('user_bp.change_password') }}">修改密码</a>
+                </p>
+                <hr>
+                <p>昵称：
+                    {% if user.nickname %}
+                        {{ user.nickname }}
+                        <a class="btn btn-info pull-right" href="{{ url_for('user_bp.change_nickname') }}">修改昵称</a>
+                    {% else %}
+                        无<a class="btn btn-info pull-right" href="{{ url_for('user_bp.change_nickname') }}">添加昵称</a>
+                    {% endif %}
+                </p>
+                <hr>
+                <p>邮箱：
+                    {% if user.email %}
+                        {{ user.email }}
+                        <a class="btn btn-info pull-right">修改邮箱</a>
+                    {% else %}
+                        未绑定<a class="btn btn-info pull-right">绑定邮箱</a>
+                    {% endif %}
+                </p>
+                <hr>
+                <p>电话：
+                    {% if user.telephone %}
+                        {{ user.telephone }}
+                        <a class="btn btn-info pull-right">修改电话</a>
+                    {% else %}
+                        未绑定<a class="btn btn-info pull-right">绑定电话</a>
+                    {% endif %}
+                </p>
+                <hr>
+                <p>权限：
+                    {% if user.is_superuser %}
+                        管理员
+                    {% else %}
+                        普通用户
+                    {% endif %}
+                </p>
+                <hr>
+                <p>创建时间：{{ user.created_time.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
