@@ -109,7 +109,7 @@ def change_password():
                     db.session.commit()
                 except Exception:
                     flash('修改密码失败')
-                    
+
                 logout_user()  # 注销用户重新登陆
                 return redirect(url_for('user_bp.login'))
             else:

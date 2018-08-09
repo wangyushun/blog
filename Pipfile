@@ -12,6 +12,7 @@ flask-admin = "*"
 flask-babelex = "*"
 wtforms = "*"
 flask-wtf = "*"
+flask-ckeditor = "*"
 
 [requires]
 python_version = "3.5"

@@ -2,6 +2,7 @@ from flask import redirect, request, url_for
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_login import current_user
+from flask_ckeditor import CKEditorField
 
 from apps.models import db
 from apps.blog.models import Blog, Tag, Category
@@ -24,6 +25,9 @@ class BaseModelView(ModelView):
 
 
 class BlogAdminView(BaseModelView):
+    extra_js = ['//cdn.ckeditor.com/4.6.0/standard/ckeditor.js']#
+    form_overrides = {'content': CKEditorField}
+
     column_list = ('id', 'title', 'author', 'category', 'tags', 'created_time')
     column_labels = {
         'id': '序号',
@@ -80,7 +84,7 @@ class UserAdminView(BaseModelView):
 
 
 # admin注册模型视图蓝图会使用endpoint命名，不指定默认使用类名，为防止蓝图名冲突，这里明确指定一下
-admin.add_view(BlogAdminView(db.session, name='博客', endpoint='blog_admin'))
-admin.add_view(CategoryAdminView(db.session, name='分类', endpoint='category_admin'))
-admin.add_view(TagAdminView(db.session, name='标签', endpoint='tag_admin'))
-admin.add_view(UserAdminView(db.session, name='用户', endpoint='user_admin'))
+admin.add_view(BlogAdminView(db.session, name='博客', endpoint='blog_admin', category='博客'))
+admin.add_view(CategoryAdminView(db.session, name='分类', endpoint='category_admin', category='博客'))
+admin.add_view(TagAdminView(db.session, name='标签', endpoint='tag_admin', category='博客'))
+admin.add_view(UserAdminView(db.session, name='用户', endpoint='user_admin', category='用户'))
